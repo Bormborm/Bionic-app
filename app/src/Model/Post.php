@@ -11,9 +11,18 @@ namespace Bormborm\Model;
 
 class Post
 {
+    /**
+     * @var int
+     */
     private $postId;
+    /**
+     * @var string
+     */
     private $text;
-    private $image;
+    /**
+     * @var int
+     */
+    private $imageId;
 
     public function __construct(int $id, string $text)
     {
@@ -22,51 +31,51 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getPostId()
+    public function getPostId(): int
     {
         return $this->postId;
     }
 
     /**
-     * @param mixed $id
+     * @param int $postId
      */
-    public function setPostId($id)
+    public function setPostId(int $postId)
     {
-        $this->postId = $id;
+        $this->postId = $postId;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getText()
+    public function getText(): string
     {
         return $this->text;
     }
 
     /**
-     * @param mixed $text
+     * @param string $text
      */
-    public function setText($text)
+    public function setText(string $text)
     {
         $this->text = $text;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getImage()
+    public function getImageId(): int
     {
-        return $this->image;
+        return $this->imageId;
     }
 
     /**
-     * @param mixed $image
+     * @param int $imageId
      */
-    public function setImage($image)
+    public function setImageId(int $imageId)
     {
-        $this->image = $image;
+        $this->imageId = $imageId;
     }
 
 

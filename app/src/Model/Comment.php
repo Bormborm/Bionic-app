@@ -12,7 +12,7 @@ class Comment
     /**
      * @var int
      */
-    private $user_id;
+    private $userId;
 
     /**
      * @var string
@@ -22,7 +22,7 @@ class Comment
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -30,7 +30,7 @@ class Comment
     /**
      * @param int $id
      */
-    public function setId($id)
+    public function setId(int $id)
     {
         $this->id = $id;
     }
@@ -38,31 +38,23 @@ class Comment
     /**
      * @return int
      */
-    public function getUserId()
+    public function getUserId(): int
     {
-        return $this->user_id;
+        return $this->userId;
     }
 
     /**
-     * @param int $user_id
+     * @param int $userId
      */
-    public function setUserId(int $user_id)
+    public function setUserId(int $userId)
     {
-        $this->user_id = $user_id;
-    }
-
-
-    public function setUser(User $user)
-    {
-        $this->setUserId($user->getId());
-
-        return $this;
+        $this->userId = $userId;
     }
 
     /**
      * @return string
      */
-    public function getText()
+    public function getText(): string
     {
         return $this->text;
     }
@@ -70,7 +62,7 @@ class Comment
     /**
      * @param string $text
      */
-    public function setText($text)
+    public function setText(string $text)
     {
         $this->text = $text;
     }

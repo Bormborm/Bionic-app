@@ -9,31 +9,47 @@ class User
      * @var int
      */
     private $id;
+
     /**
      * @var string
      */
     private $email;
+
     /**
      * @var string
      */
     private $login;
+
     /**
      * @var string
      */
     private $password;
+
     /**
      * @var string
      */
     private $name;
+
     /**
      * @var string
      */
     private $lastname;
+
+
+    /**
+     * @var Comment[]
+     */
+    private $comments;
+
+    /**
+     * @var Post[]
+     */
+    private $posts;
+
     /**
      * @var bool
      */
     private $isAuthorized;
-
 
     public function __construct(int $id, string $name)
     {
@@ -41,111 +57,141 @@ class User
         $this->name = $name;
     }
 
-
-// TODO: Не нравится авторизация.
-// TODO: Разобраться с экземплярами класса User.
-// TODO: Не используются свойства класса.
-
-//    public function authoriseUser($password) {
-//        $passHash = $this->dbh->query("SELECT password FROM users WHERE email = " . $this->email . "AND login = " . $this->login);
-//        if (md5($password == $passHash)) {
-//            $this->isAuthorized = true;
-//        }
-//    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
-
-    /**
-     * @param mixed $login
-     */
-    public function setLogin($login)
-    {
-        $this->login = $login;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
-
-    /**
-     * @param mixed $lastname
-     */
-    public function setLastname($lastname)
-    {
-        $this->lastname = $lastname;
-    }
-
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @return string
      */
-    public function setId($id)
+    public function getEmail(): string
     {
-        $this->id = $id;
+        return $this->email;
     }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLogin(): string
+    {
+        return $this->login;
+    }
+
+    /**
+     * @param string $login
+     */
+    public function setLogin(string $login)
+    {
+        $this->login = $login;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password)
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastname(): string
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param string $lastname
+     */
+    public function setLastname(string $lastname)
+    {
+        $this->lastname = $lastname;
+    }
+
+    /**
+     * @return Comment []
+     */
+    public function getComments(): array
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param Comment[] $comments
+     */
+    public function setComments(array $comments)
+    {
+        $this->comments = $comments;
+    }
+
+    /**
+     * @return Post[]
+     */
+    public function getPosts(): array
+    {
+        return $this->posts;
+    }
+
+    /**
+     * @param Post[] $posts
+     */
+    public function setPosts(array $posts)
+    {
+        $this->posts = $posts;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsAuthorized(): bool
+    {
+        return $this->isAuthorized;
+    }
+
+    /**
+     * @param boolean $isAuthorized
+     */
+    public function setIsAuthorized(bool $isAuthorized)
+    {
+        $this->isAuthorized = $isAuthorized;
+    }
+
+
 }

@@ -9,7 +9,12 @@
 namespace Bormborm\Model\Repository;
 
 
-class Comment
+class Comment extends AbstractRepository
 {
+    public function getAllByUserId(int $id)
+    {
+        $conn = self::getConnection();
+
+    }
 
 }

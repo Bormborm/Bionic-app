@@ -11,7 +11,6 @@ require_once 'src/Model/Repository/User.php';
 $user = new \Bormborm\Model\Repository\User();
 $userResult = $user->getUserById($_GET['id']);
 var_dump($userResult);
-print $userResult[0]['name']; //WTF?
-
+print $userResult['name']; //WTF?
 
 
