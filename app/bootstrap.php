@@ -12,9 +12,7 @@ if (!file_exists($routesConfigFile)) {
 }
 $routes = Yaml::parse(file_get_contents($routesConfigFile), Yaml::PARSE_OBJECT);
 
-//var_dump($routes); die;
-
-if (!$route = $_GET['route'] ?: false) {
+if (!$route = $_GET['entity'] ?: false) {
     $route = APP_DEFAULT_ROUTE;
 }
 
@@ -24,12 +22,15 @@ if (!array_key_exists($route, $routes)) {
 
 $controllerClass = $routes[$route]['class'];
 $controllerMethod = $routes[$route]['method'] . 'Action';
-
 if (!class_exists($controllerClass) || !method_exists($controllerClass, $controllerMethod)) {
     throw new RuntimeException('Your controller is a shit!');
 }
 
 $response = (new $controllerClass)->$controllerMethod();
+var_dump($response);
+
+
+
 
 if (gettype($response) === "string") {
     header("HTTP/1.1 200 OK");

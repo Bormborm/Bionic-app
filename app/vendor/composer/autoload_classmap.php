@@ -6,6 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Bormborm\\Controller\\MainController' => $baseDir . '/src/Controller/MainController.php',
+    'Bormborm\\Model\\Comment' => $baseDir . '/src/Model/Comment.php',
+    'Bormborm\\Model\\DB' => $baseDir . '/src/Model/DB.php',
+    'Bormborm\\Model\\Post' => $baseDir . '/src/Model/Post.php',
+    'Bormborm\\Model\\Repository\\AbstractRepository' => $baseDir . '/src/Model/Repository/AbstractRepository.php',
+    'Bormborm\\Model\\Repository\\Comment' => $baseDir . '/src/Model/Repository/Comment.php',
+    'Bormborm\\Model\\Repository\\Post' => $baseDir . '/src/Model/Repository/Post.php',
+    'Bormborm\\Model\\Repository\\User' => $baseDir . '/src/Model/Repository/User.php',
+    'Bormborm\\Model\\User' => $baseDir . '/src/Model/User.php',
     'Doctrine\\Common\\Annotations\\Annotation' => $vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations/Annotation.php',
     'Doctrine\\Common\\Annotations\\AnnotationException' => $vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationException.php',
     'Doctrine\\Common\\Annotations\\AnnotationReader' => $vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationReader.php',
@@ -353,13 +362,6 @@ return array(
     'Symfony\\Component\\Yaml\\Exception\\RuntimeException' => $vendorDir . '/symfony/yaml/Exception/RuntimeException.php',
     'Symfony\\Component\\Yaml\\Inline' => $vendorDir . '/symfony/yaml/Inline.php',
     'Symfony\\Component\\Yaml\\Parser' => $vendorDir . '/symfony/yaml/Parser.php',
-    'Symfony\\Component\\Yaml\\Tests\\A' => $vendorDir . '/symfony/yaml/Tests/DumperTest.php',
-    'Symfony\\Component\\Yaml\\Tests\\B' => $vendorDir . '/symfony/yaml/Tests/ParserTest.php',
-    'Symfony\\Component\\Yaml\\Tests\\DumperTest' => $vendorDir . '/symfony/yaml/Tests/DumperTest.php',
-    'Symfony\\Component\\Yaml\\Tests\\InlineTest' => $vendorDir . '/symfony/yaml/Tests/InlineTest.php',
-    'Symfony\\Component\\Yaml\\Tests\\ParseExceptionTest' => $vendorDir . '/symfony/yaml/Tests/ParseExceptionTest.php',
-    'Symfony\\Component\\Yaml\\Tests\\ParserTest' => $vendorDir . '/symfony/yaml/Tests/ParserTest.php',
-    'Symfony\\Component\\Yaml\\Tests\\YamlTest' => $vendorDir . '/symfony/yaml/Tests/YamlTest.php',
     'Symfony\\Component\\Yaml\\Unescaper' => $vendorDir . '/symfony/yaml/Unescaper.php',
     'Symfony\\Component\\Yaml\\Yaml' => $vendorDir . '/symfony/yaml/Yaml.php',
 );

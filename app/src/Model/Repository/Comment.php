@@ -1,19 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Borm
- * Date: 12.07.2016
- * Time: 14:02
- */
 
 namespace Bormborm\Model\Repository;
-
 
 class Comment extends AbstractRepository
 {
     public function getAllByUserId(int $id)
     {
         $conn = self::getConnection();
+        $response = $conn->query("SELECT * FROM users u LEFT JOIN comments c ON u.id = c.user_id WHERE u.id = ". $id . ";");
+        $comment =  $response->fetch();
+        return $comment;
 
     }
 

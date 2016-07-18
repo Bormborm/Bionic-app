@@ -1,7 +1,11 @@
 user:
-  class: '\Bormborm\Controller\UserController'
+  class: '\Bormborm\Controller\MainController'
   method: 'getUser'
 
 comment:
   class: '\Bormborm\Controller\MainController'
   method: 'getComment'
+
+post:
+  class: '\Bormborm\Controller\MainController'
+  method: 'getPost'
