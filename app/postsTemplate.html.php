@@ -6,10 +6,11 @@
 </head>
 <body>
 <div class="posts-section">
-    <?php foreach ($response as $postsArray){
-             foreach ($postsArray as $text){
-             print_r("<div>$text</div>")
-
+<?php foreach ($response as $postsArray){
+    foreach ($postsArray as $text) {
+        print_r("<div><p>" . $text . "</p></div>");
+    }
+}?>
 </div>
 
 </body>
