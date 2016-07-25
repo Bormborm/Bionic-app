@@ -3,6 +3,8 @@
 namespace Bormborm\Model;
 
 
+use Bormborm\Model\Repository\Comment;
+
 class User
 {
     /**
@@ -35,9 +37,8 @@ class User
      */
     private $lastname;
 
-
     /**
-     * @var Comment[]
+     * @var \Bormborm\Model\Comment []
      */
     private $comments;
 
@@ -153,12 +154,14 @@ class User
         return $this->comments;
     }
 
+//TODO: check and update comments and posts classes arrays.
+
     /**
-     * @param Comment[] $comments
+     * @param Comment $comment
      */
-    public function setComments(array $comments)
+    public function setComments(Comment $comment)
     {
-        $this->comments = $comments;
+        $this->comments = $comment;
     }
 
     /**

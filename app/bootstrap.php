@@ -27,10 +27,10 @@ if (!class_exists($controllerClass) || !method_exists($controllerClass, $control
 }
 
 $response = (new $controllerClass)->$controllerMethod();
-var_dump($response);
 
+$entity = $_GET['entity'];
 
-
+include_once $entity . 'sTemplate.html.php';
 
 if (gettype($response) === "string") {
     header("HTTP/1.1 200 OK");

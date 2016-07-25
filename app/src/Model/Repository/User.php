@@ -6,7 +6,6 @@ use Bormborm\Model\User as UserModel;
 
 class User extends AbstractRepository
 {
-
     /**
      * @param int $id
      * @return UserModel

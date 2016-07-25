@@ -12,5 +12,14 @@ class Comment extends AbstractRepository
         return $comment;
 
     }
+    public function addNewCommentByUserId(int $id, string $text)
+    {
+        //TODO: if the post is commented, need to insert postID.
+
+        $conn = self::getConnection();
+        $stmt = $conn->prepare("INSERT INTO comments VALUES (,':text',$id,,NOW())");
+        $stmt->bindValue(':text',$text);
+        $stmt->execute();
+    }
 
 }
