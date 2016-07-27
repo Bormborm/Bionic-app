@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 
 require_once 'vendor/autoload.php';
 
@@ -30,7 +31,7 @@ $response = (new $controllerClass)->$controllerMethod();
 
 $entity = $_GET['entity'];
 
-include_once $entity . 'sTemplate.html.php';
+include_once __DIR__ . DIRECTORY_SEPARATOR . 'templates/' . $entity . 'sTemplate.html.php';
 
 if (gettype($response) === "string") {
     header("HTTP/1.1 200 OK");

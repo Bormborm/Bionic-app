@@ -12,11 +12,11 @@ class MainController
     public function getUserAction()
     {
         $user = new User();
-        if (!($_GET['id']) == null) {
-            $response = $user->getUserById($_GET['id']);
+        if (($_GET['id']) == null) {
+            $response = $user->getAll();
         }
         else {
-            $response = $user->getUserById(1);
+            $response = $user->getUserById($_GET['id']);
         }
         return $response;
     }

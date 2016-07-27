@@ -12,6 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/twig/twig" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -27,6 +28,7 @@
           <root url="file://$MODULE_DIR$/app/vendor/doctrine/inflector" />
           <root url="file://$MODULE_DIR$/app/vendor/doctrine/lexer" />
           <root url="file://$MODULE_DIR$/app/vendor/symfony/yaml" />
+          <root url="file://$MODULE_DIR$/app/vendor/twig/twig" />
         </CLASSES>
         <SOURCES>
           <root url="file://$MODULE_DIR$/app/vendor/composer" />
@@ -38,6 +40,7 @@
           <root url="file://$MODULE_DIR$/app/vendor/doctrine/inflector" />
           <root url="file://$MODULE_DIR$/app/vendor/doctrine/lexer" />
           <root url="file://$MODULE_DIR$/app/vendor/symfony/yaml" />
+          <root url="file://$MODULE_DIR$/app/vendor/twig/twig" />
         </SOURCES>
       </library>
     </orderEntry>

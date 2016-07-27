@@ -1,11 +1,15 @@
 <?php
 
 namespace Bormborm\Model\Repository;
-require_once 'AbstractRepository.php';
-use Bormborm\Model\User as UserModel;
 
-class User extends AbstractRepository
+
+use Bormborm\Model\User as UserModel;
+use Bormborm\Services\DBHandlerService;
+
+class User extends DBHandlerService
 {
+    //TODO: add posts and comments to single user
+
     /**
      * @param int $id
      * @return UserModel
@@ -13,27 +17,31 @@ class User extends AbstractRepository
     public static function getUserById(int $id)
     {
         $conn = self::getConnection();
-        $response = $conn->query("SELECT * FROM users WHERE id = ". $id . ";");
-        $user =  $response->fetch();
+        $resp = $conn->query("SELECT * FROM users WHERE id = ". $id . ";");
+        $col =  $resp->fetch();
+        $user = new UserModel($id, $col['name'], $col['lastname'], $col['email'], $col['password']);
         return $user;
-
     }
 
     /**
-     * @return UserModel array
+     * @return array
      */
-    public function getAll()
+    public function getAll() :array
     {
         $conn = self::getConnection();
 
-        $response = $conn->query("SELECT * FROM users;");
+        $response = $conn->query("SELECT * FROM users WHERE 1;");
         $users = $response->fetchAll();
 
         foreach ($users as $user => $userArray) {
-            $users[$user] = new UserModel($userArray['id'], $userArray['name']);
+            $users[$user] = new UserModel(
+                $userArray['id'],
+                $userArray['name'],
+                $userArray['lastname'],
+                $userArray['email'],
+                $userArray['password']
+            );
         }
         return $users;
     }
-
-
 }

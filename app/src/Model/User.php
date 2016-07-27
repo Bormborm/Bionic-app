@@ -2,11 +2,13 @@
 
 namespace Bormborm\Model;
 
-
-use Bormborm\Model\Repository\Comment;
+use Bormborm\Model\Comment;
+use Bormborm\Model\Post;
 
 class User
 {
+    //TODO: check Post and Comment getters and setters
+
     /**
      * @var int
      */
@@ -38,24 +40,27 @@ class User
     private $lastname;
 
     /**
-     * @var \Bormborm\Model\Comment []
+     * @var Comment []
      */
     private $comments;
 
     /**
-     * @var Post[]
+     * @var Post []
      */
     private $posts;
 
-    /**
-     * @var bool
-     */
-    private $isAuthorized;
+    //TODO: make constructor good
 
-    public function __construct(int $id, string $name)
+    public function __construct(int $id, string $name, string $lastname, string $email,
+                                string $password /**$posts = null, $comments = null **/)
     {
         $this->id = $id;
-        $this->name = $name;
+        self::setName($name);
+        self::setLastname($lastname);
+        self::setEmail($email);
+        self::setPassword($password);
+        //self::setPosts($posts);
+        //self::setComments($comments);
     }
 
     /**
@@ -147,21 +152,19 @@ class User
     }
 
     /**
-     * @return Comment []
+     * @return Comment[]
      */
-    public function getComments(): array
+    public function getComments()
     {
         return $this->comments;
     }
-
-//TODO: check and update comments and posts classes arrays.
 
     /**
      * @param Comment $comment
      */
     public function setComments(Comment $comment)
     {
-        $this->comments = $comment;
+        $this->comments = array_push($comments, $comment);
     }
 
     /**
@@ -173,28 +176,10 @@ class User
     }
 
     /**
-     * @param Post[] $posts
+     * @param Post $post
      */
-    public function setPosts(array $posts)
+    public function setPosts(Post $post)
     {
-        $this->posts = $posts;
+        $this->posts = array_push($posts, $post);
     }
-
-    /**
-     * @return boolean
-     */
-    public function isIsAuthorized(): bool
-    {
-        return $this->isAuthorized;
-    }
-
-    /**
-     * @param boolean $isAuthorized
-     */
-    public function setIsAuthorized(bool $isAuthorized)
-    {
-        $this->isAuthorized = $isAuthorized;
-    }
-
-
 }
