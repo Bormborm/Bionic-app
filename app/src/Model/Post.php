@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Borm
- * Date: 12.07.2016
- * Time: 14:01
- */
 
 namespace Bormborm\Model;
-
 
 class Post
 {
@@ -20,30 +13,37 @@ class Post
      */
     private $text;
     /**
-     * @var int
+     * @var string
      */
-    private $imageId;
+    private $date;
+    /**
+     * @var Comment []
+     */
+    private $comments;
 
-    public function __construct(int $id, string $text)
+    public function __construct(int $id, string $text, string $date)
     {
         $this->postId = $id;
         $this->text = $text;
+        $this->date = $date;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getPostId(): int
+    public function getDate() : string
     {
-        return $this->postId;
+        return $this->date;
     }
 
     /**
-     * @param int $postId
+     * @param string $date
+     * @return $this
      */
-    public function setPostId(int $postId)
+    public function setDate(string $date)
     {
-        $this->postId = $postId;
+        $this->date = $date;
+        return $this;
     }
 
     /**
@@ -65,17 +65,35 @@ class Post
     /**
      * @return int
      */
-    public function getImageId(): int
-    {
-        return $this->imageId;
-    }
+//    public function getImageId(): int
+//    {
+//        return $this->imageId;
+//    }
 
     /**
      * @param int $imageId
      */
-    public function setImageId(int $imageId)
+//    public function setImageId(int $imageId)
+//    {
+//        $this->imageId = $imageId;
+//    }
+
+    /**
+     * @param mixed $comments
+     * @return Post
+     */
+    public function setComments($comments)
     {
-        $this->imageId = $imageId;
+        $this->comments = $comments;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 
 

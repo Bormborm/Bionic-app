@@ -31,7 +31,10 @@ $response = (new $controllerClass)->$controllerMethod();
 
 $entity = $_GET['entity'];
 
-include_once __DIR__ . DIRECTORY_SEPARATOR . 'templates/' . $entity . 'sTemplate.html.php';
+//if (!empty($entity))
+//    {
+//        include_once __DIR__ . DIRECTORY_SEPARATOR . 'templates/' . $entity . 'sTemplate.html.php'; // hardcoding
+//    } else include __DIR__ . DIRECTORY_SEPARATOR . 'templates/htmlTemplate.html';                   // temporary
 
 if (gettype($response) === "string") {
     header("HTTP/1.1 200 OK");

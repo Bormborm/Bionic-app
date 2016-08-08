@@ -9,3 +9,5 @@ comment:
 post:
   class: '\Bormborm\Controller\MainController'
   method: 'getPost'
+
+

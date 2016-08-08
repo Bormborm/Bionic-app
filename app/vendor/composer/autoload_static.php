@@ -79,6 +79,7 @@ class ComposerStaticInit92dabaae97c48314b1ea6f9033e2a276
 
     public static $classMap = array (
         'Bormborm\\Controller\\MainController' => __DIR__ . '/../..' . '/src/Controller/MainController.php',
+        'Bormborm\\Controller\\TemplateController' => __DIR__ . '/../..' . '/src/Controller/TemplateController.php',
         'Bormborm\\Model\\Comment' => __DIR__ . '/../..' . '/src/Model/Comment.php',
         'Bormborm\\Model\\DB' => __DIR__ . '/../..' . '/src/Model/DB.php',
         'Bormborm\\Model\\Post' => __DIR__ . '/../..' . '/src/Model/Post.php',

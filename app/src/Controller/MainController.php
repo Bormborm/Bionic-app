@@ -6,17 +6,39 @@ use Bormborm\Model\Repository\Comment;
 use Bormborm\Model\Repository\Post;
 use Bormborm\Model\Repository\User;
 
-class MainController
+class MainController extends TemplateController
 {
+    //TODO: implement registration and login through twig templates
+
+    public function indexAction()
+    {
+        return $this->templater->render(
+            'name.twig',
+            [
+                'array' => 'Of data',
+                'with' => 'values needed'
+            ]
+        );
+    }
 
     public function getUserAction()
     {
         $user = new User();
         if (($_GET['id']) == null) {
             $response = $user->getAll();
+            //$this->templater->render('users.twig', $response);
         }
         else {
             $response = $user->getUserById($_GET['id']);
+            echo $this->templater->render(
+                'user.twig',
+                [
+                    'name' => $response->getName(), //string
+                    'lastname' => $response->getLastname(), //string
+                    'posts' => $response->getPosts(), //array of post objects
+                ]
+            );
+         //  echo "<pre>"; var_dump($response); echo "</pre>"; die();
         }
         return $response;
     }

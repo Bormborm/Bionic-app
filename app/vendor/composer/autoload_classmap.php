@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Bormborm\\Controller\\MainController' => $baseDir . '/src/Controller/MainController.php',
+    'Bormborm\\Controller\\TemplateController' => $baseDir . '/src/Controller/TemplateController.php',
     'Bormborm\\Model\\Comment' => $baseDir . '/src/Model/Comment.php',
     'Bormborm\\Model\\DB' => $baseDir . '/src/Model/DB.php',
     'Bormborm\\Model\\Post' => $baseDir . '/src/Model/Post.php',

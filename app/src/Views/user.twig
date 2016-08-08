@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UserInfo</title>
+    <style>
+        body {
+            background-color: #2c3338;
+            color: #ffffff;
+            font-family: 'Open Sans', Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5em;
+        }
+
+        a {
+            color: #eee;
+            text-decoration: none;
+        }
+
+        p {
+            line-height: 1.5em;
+        }
+
+        .user-info {
+            border: 2px dotted #d44179;
+            background-color: #3e4b82;
+            margin-bottom: 1%;
+            text-align: center;
+        }
+
+        .posts-section {
+            padding: 1%;
+            border: 1px solid white;
+        }
+        .post {
+            width: 70%;
+
+            padding: .5%;
+            border: 1px solid wheat;
+            margin: 0 auto 1% 20%;
+        }
+        .post-date {
+            font-size: x-small;
+            color: #5d676c;
+            text-align: right;
+            padding-right: 5%;
+        }
+        .comment {
+            padding: 0 .5%;
+            max-width:  70.2%;
+            margin: 1% auto 1% 20%;
+            background: #3e4b82;
+            font-size: smaller;
+        }
+        .comment p {
+            padding: .2%;
+        }
+    </style>
+</head>
+<body>
+<div class="user-info">
+    <img src="" alt="User Avatar">
+    <h1>Hello, {{ name }} {{ lastname }}</h1>
+</div>
+<div class="posts-section">
+    {% for post in posts %}
+        <div class="post">
+            <p>{{ post.getText() }}</p>
+            <p class="post-date">{{ post.getDate() }}</p>
+        </div>
+        <div class="comment-section">
+            {% for comments in post.getComments() %}
+                <div class="comment">
+                <p><strong>{{ comments.getUsername() }} wrote at {{ comments.getDate() }}: </strong><br />{{ comments.getText() }}</p>
+            </div>
+            {% endfor %}
+
+    {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

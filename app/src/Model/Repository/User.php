@@ -3,6 +3,7 @@
 namespace Bormborm\Model\Repository;
 
 
+use Bormborm\Model\Comment;
 use Bormborm\Model\User as UserModel;
 use Bormborm\Services\DBHandlerService;
 
@@ -20,6 +21,8 @@ class User extends DBHandlerService
         $resp = $conn->query("SELECT * FROM users WHERE id = ". $id . ";");
         $col =  $resp->fetch();
         $user = new UserModel($id, $col['name'], $col['lastname'], $col['email'], $col['password']);
+        $user->setPosts((new Post())->getAllByUserId($id));
+
         return $user;
     }
 

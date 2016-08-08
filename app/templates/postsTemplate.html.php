@@ -21,7 +21,8 @@
 </head>
 <body>
 <div class="posts-section">
-    <?php foreach ($response as $postsArray): ?>
+    <?php echo "<pre>"; var_dump($response); echo "</pre>";
+    foreach ($response as $postsArray): ?>
         <div class="post">
             <?php
             foreach ($postsArray as $text) {

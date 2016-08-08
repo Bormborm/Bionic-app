@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="users-section">
-    <?php var_dump($response);
+    <?php echo '<pre>'; var_dump($response); echo '</pre>';
     foreach ($response as $userObjects){
         foreach ($userObjects as $userObject) {}
  echo "<br/>";

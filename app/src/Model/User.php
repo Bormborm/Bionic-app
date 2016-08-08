@@ -7,8 +7,6 @@ use Bormborm\Model\Post;
 
 class User
 {
-    //TODO: check Post and Comment getters and setters
-
     /**
      * @var int
      */
@@ -48,6 +46,10 @@ class User
      * @var Post []
      */
     private $posts;
+    /**
+     * @var string
+     */
+    private $userAvatar;
 
     //TODO: make constructor good
 
@@ -81,10 +83,12 @@ class User
 
     /**
      * @param string $email
+     * @return $this
      */
     public function setEmail(string $email)
     {
         $this->email = $email;
+        return $this;
     }
 
     /**
@@ -97,10 +101,12 @@ class User
 
     /**
      * @param string $login
+     * @return $this
      */
     public function setLogin(string $login)
     {
         $this->login = $login;
+        return $this;
     }
 
     /**
@@ -113,10 +119,12 @@ class User
 
     /**
      * @param string $password
+     * @return $this
      */
     public function setPassword(string $password)
     {
         $this->password = $password;
+        return $this;
     }
 
     /**
@@ -129,10 +137,12 @@ class User
 
     /**
      * @param string $name
+     * @return $this
      */
     public function setName(string $name)
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -145,10 +155,12 @@ class User
 
     /**
      * @param string $lastname
+     * @return $this
      */
     public function setLastname(string $lastname)
     {
         $this->lastname = $lastname;
+        return $this;
     }
 
     /**
@@ -161,10 +173,12 @@ class User
 
     /**
      * @param Comment $comment
+     * @return $this
      */
     public function setComments(Comment $comment)
     {
         $this->comments = array_push($comments, $comment);
+        return $this;
     }
 
     /**
@@ -176,10 +190,37 @@ class User
     }
 
     /**
-     * @param Post $post
+     * @param Post []
+     * @return $this
      */
-    public function setPosts(Post $post)
+    public function setPosts($posts)
     {
-        $this->posts = array_push($posts, $post);
+        $this->posts = $posts;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserAvatar(): string
+    {
+        return $this->userAvatar;
+    }
+
+    /**
+     * @param string $userAvatar
+     * @return $this
+     */
+    public function setUserAvatar(string $userAvatar)
+    {
+        $this->userAvatar = $userAvatar;
+        return $this;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        $response = $this->getName() . " " . $this->getLastname();
+        return $response;
     }
 }

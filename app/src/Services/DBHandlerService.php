@@ -4,7 +4,7 @@ namespace Bormborm\Services;
 
 use Doctrine\DBAL\DriverManager;
 
-abstract class DBHandlerService
+class DBHandlerService
 {
     public static function getConnection()
     {
@@ -12,7 +12,7 @@ abstract class DBHandlerService
             'dbname' => 'pantheon',
             'user' => 'olympus',
             'password' => 'odin3306',
-            'host' => '127.0.0.1',
+            'host' => '192.168.1.4',
             'driver' => 'pdo_mysql',
         );
         return DriverManager::getConnection($connectionParams);
@@ -25,3 +25,4 @@ abstract class DBHandlerService
     }
 
 }
+
