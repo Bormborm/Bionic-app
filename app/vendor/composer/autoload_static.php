@@ -88,6 +88,7 @@ class ComposerStaticInit92dabaae97c48314b1ea6f9033e2a276
         'Bormborm\\Model\\Repository\\User' => __DIR__ . '/../..' . '/src/Model/Repository/User.php',
         'Bormborm\\Model\\User' => __DIR__ . '/../..' . '/src/Model/User.php',
         'Bormborm\\Services\\DBHandlerService' => __DIR__ . '/../..' . '/src/Services/DBHandlerService.php',
+        'Bormborm\\Services\\ValidationService' => __DIR__ . '/../..' . '/src/Services/ValidationService.php',
         'Doctrine\\Common\\Annotations\\Annotation' => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations/Annotation.php',
         'Doctrine\\Common\\Annotations\\AnnotationException' => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationException.php',
         'Doctrine\\Common\\Annotations\\AnnotationReader' => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationReader.php',

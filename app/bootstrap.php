@@ -27,11 +27,25 @@ if (!class_exists($controllerClass) || !method_exists($controllerClass, $control
     throw new RuntimeException('Your controller is a shit!');
 }
 
-$response = (new $controllerClass)->$controllerMethod();
+$validator = new \Bormborm\Services\ValidationService();
+
+if (!empty($_POST['password']) && (!empty($_POST['email'])))
+{
+    $validated = $validator->validatePassword($_POST['email'], $_POST['password']);
+
+    //TODO: Сделать с этим что-нибудь!
+    // hardcoding incoming!!!
+
+    $_GET['entity'] = 'user';
+    $_GET['id'] = $validated['id'];
+
+}
 
 $entity = $_GET['entity'];
+$response = (new $controllerClass)->$controllerMethod();
 
 if (empty($entity)) include __DIR__ . DIRECTORY_SEPARATOR . 'templates/htmlTemplate.html';  // temporary
+
 
 if (gettype($response) === "string") {
     header("HTTP/1.1 200 OK");

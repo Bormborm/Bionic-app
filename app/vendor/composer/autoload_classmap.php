@@ -16,6 +16,7 @@ return array(
     'Bormborm\\Model\\Repository\\User' => $baseDir . '/src/Model/Repository/User.php',
     'Bormborm\\Model\\User' => $baseDir . '/src/Model/User.php',
     'Bormborm\\Services\\DBHandlerService' => $baseDir . '/src/Services/DBHandlerService.php',
+    'Bormborm\\Services\\ValidationService' => $baseDir . '/src/Services/ValidationService.php',
     'Doctrine\\Common\\Annotations\\Annotation' => $vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations/Annotation.php',
     'Doctrine\\Common\\Annotations\\AnnotationException' => $vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationException.php',
     'Doctrine\\Common\\Annotations\\AnnotationReader' => $vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationReader.php',
