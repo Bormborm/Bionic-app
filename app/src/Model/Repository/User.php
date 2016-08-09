@@ -3,7 +3,7 @@
 namespace Bormborm\Model\Repository;
 
 
-use Bormborm\Model\Comment;
+
 use Bormborm\Model\User as UserModel;
 use Bormborm\Services\DBHandlerService;
 

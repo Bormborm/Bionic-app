@@ -96,5 +96,23 @@ class Post
         return $this->comments;
     }
 
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->postId;
+    }
+
+    /**
+     * @param int $postId
+     * @return $this
+     */
+    public function setId(int $postId)
+    {
+        $this->postId = $postId;
+        return $this;
+    }
+
 
 }

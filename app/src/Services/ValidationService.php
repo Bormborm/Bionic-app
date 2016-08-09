@@ -18,6 +18,7 @@ class ValidationService extends DBHandlerService
                               FROM users 
                               WHERE email='" . $email . "';"))
                               ->fetch();
+        $response['id'] = (int) $response['id'];
         if ($response['password'] == md5($password))
         {
         $result = $response;

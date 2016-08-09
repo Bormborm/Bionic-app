@@ -35,7 +35,7 @@ class MainController extends TemplateController
                 [
                     'name' => $response->getName(), //string
                     'lastname' => $response->getLastname(), //string
-                    'posts' => $response->getPosts(), //array of post objects
+                    'posts' => $response->getPosts(), //array of post objects with comments
                 ]
             );
          //  echo "<pre>"; var_dump($response); echo "</pre>"; die();

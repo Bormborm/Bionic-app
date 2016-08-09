@@ -159,8 +159,18 @@
 			<div class="comment"><p class="debug-info">comment</p>
 				<p><strong>{{ comments.getUsername() }} wrote at {{ comments.getDate() }}
 						: </strong><br/>{{ comments.getText() }}</p>
+				<form method="post" action="">
+					<input type="hidden" value="{{ comments.getId() }}">
+					<input type="submit" value="delete">
 			</div>
 		{% endfor %}
+		<div class="comment">
+			<form method="post" action="">
+				<input type="text" placeholder="add comment" name="addedComment">
+				<input type="hidden" name="postId" value="{{ post.getId() }}">
+				<input type="submit" value="Post">
+			</form>
+		</div>
 
 		{% endfor %}
 	</div>

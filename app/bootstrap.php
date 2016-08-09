@@ -1,6 +1,8 @@
 <?php
 ini_set('display_errors', 1);
 
+session_start();
+
 require_once 'vendor/autoload.php';
 
 use Symfony\Component\Yaml\Yaml;
@@ -28,23 +30,29 @@ if (!class_exists($controllerClass) || !method_exists($controllerClass, $control
 }
 
 $validator = new \Bormborm\Services\ValidationService();
-
-if (!empty($_POST['password']) && (!empty($_POST['email'])))
-{
+$commentRepository = new \Bormborm\Model\Repository\Comment();
+if (!empty($_POST['password']) && (!empty($_POST['email']))) {
     $validated = $validator->validatePassword($_POST['email'], $_POST['password']);
 
     //TODO: Сделать с этим что-нибудь!
     // hardcoding incoming!!!
-
+    $_SESSION['id'] = $validated['id'];
     $_GET['entity'] = 'user';
     $_GET['id'] = $validated['id'];
-
 }
+
 
 $entity = $_GET['entity'];
 $response = (new $controllerClass)->$controllerMethod();
 
+if (!empty($_POST['addedComment']) ?? (!empty($_POST['postId']))) {
+    $postId = (int)$_POST['postId'];
+    $commentRepository->addNewCommentByUserId($_SESSION['id'], $_POST['addedComment'], $postId);
+
+}
+
 if (empty($entity)) include __DIR__ . DIRECTORY_SEPARATOR . 'templates/htmlTemplate.html';  // temporary
+var_dump($_SESSION);
 
 
 if (gettype($response) === "string") {

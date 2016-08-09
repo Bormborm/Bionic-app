@@ -13,18 +13,22 @@ class Post extends DBHandlerService
      */
     public function getAllByUserId(int $id)
     {
-        $conn = self::getConnection();
-        $response = $conn->query("SELECT p.text, p.date, p.id
+        $response = self::query("SELECT p.text, p.date, p.id
                                   FROM posts p LEFT JOIN users u
                                   ON u.id = p.user_id 
-                                  WHERE u.id = ". $id . "
+                                  WHERE u.id = " . $id . "
                                   ORDER BY id DESC;");
-        $posts =  $response->fetchAll();
-        foreach ($posts as $post => $postArray) {
-            $comments = (new Comment())
-                ->getAllPostComments($postArray['id']);
-            $posts[$post] = (new PostModel($postArray['id'], $postArray['text'], $postArray['date']))
-                ->setComments($comments);
+        $posts = $response->fetchAll();
+        foreach ($posts as $postModel => $postArray) {
+            $allPostComments = (new Comment())->getAllPostComments($postArray['id']);
+            $posts[$postModel] =
+                (
+                    new PostModel(
+                        $postArray['id'],
+                        $postArray['text'],
+                        $postArray['date']
+                    )
+                )->setComments($allPostComments);
         }
         return $posts;
 
