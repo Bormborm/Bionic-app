@@ -33,9 +33,10 @@ class MainController extends TemplateController
             echo $this->templater->render(
                 'user.twig',
                 [
+                    'id' => $response->getId(),
                     'name' => $response->getName(), //string
                     'lastname' => $response->getLastname(), //string
-                    'posts' => $response->getPosts(), //array of post objects with comments
+                    'posts' => $response->getPosts() //array of post objects with comments
                 ]
             );
          //  echo "<pre>"; var_dump($response); echo "</pre>"; die();

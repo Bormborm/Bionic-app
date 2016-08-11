@@ -48,4 +48,9 @@ class Comment extends DBHandlerService
         }
         return $comments;
     }
+    public function deleteComment(int $id)
+    {
+        $response = self::query("DELETE FROM comments WHERE id=" . $id . ";");
+        return $response;
+    }
 }

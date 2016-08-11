@@ -21,7 +21,8 @@ class ValidationService extends DBHandlerService
         $response['id'] = (int) $response['id'];
         if ($response['password'] == md5($password))
         {
-        $result = $response;
+            $result = $response;
+            $_SESSION['id'] = $result['id'];
         }
         return $result;
     }
