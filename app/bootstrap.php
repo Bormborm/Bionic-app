@@ -32,9 +32,9 @@ if (!class_exists($controllerClass) || !method_exists($controllerClass, $control
 
 $validator = new \Bormborm\Services\ValidationService();
 $commentRepository = new \Bormborm\Model\Repository\Comment();
-
+$postRepository = new \Bormborm\Model\Repository\Post();
 if (!empty($_POST['logout'])) {
-    unset($_SESSION['id']);
+    unset($_SESSION);
     unset($_POST['email']);
     session_destroy();
 }
@@ -45,22 +45,31 @@ if (!empty($_POST['password']) && (!empty($_POST['email'])))
 
     //TODO: Сделать с этим что-нибудь!
     // hardcoding incoming!!!
-    //$_SESSION['id'] = $validated['id'];
+
     $_GET['entity'] = 'user';
     $_GET['id'] = $validated['id'];
 }
 
 
 $entity = $_GET['entity'];
+
 $response = (new $controllerClass)->$controllerMethod();
 
-if (!empty($_POST['addedComment']) && (!empty($_POST['postId']))) {
+if (!empty($_POST['addedComment']) && (!empty($_POST['postId'])))
+{
     $postId = (int) $_POST['postId'];
     $commentRepository->addNewCommentByUserId($_SESSION['id'], $_POST['addedComment'], $postId);
 }
-if (!empty($_POST['deleteComment'])) {
+
+if (!empty($_POST['deleteComment']))
+{
     $id = (int) $_POST['deleteComment'];
     $commentRepository->deleteComment($id);
+}
+
+if (!empty($_POST['postText']))
+{
+    $postRepository->addNewPost($_POST['postText'], $_SESSION['id']);
 }
 
 if (empty($_SESSION['id']) || ($entity == null)) {
@@ -69,7 +78,6 @@ include __DIR__ . DIRECTORY_SEPARATOR . 'templates/htmlTemplate.html';
 var_dump($_SESSION);
 var_dump($_GET['entity']);
 var_dump($_GET['id']);
-
 
 if (gettype($response) === "string") {
     header("HTTP/1.1 200 OK");

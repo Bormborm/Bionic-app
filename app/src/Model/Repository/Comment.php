@@ -21,8 +21,6 @@ class Comment extends DBHandlerService
     }
     public function addNewCommentByUserId(int $id, string $text, int $post_id)
     {
-        //TODO: if the post is commented, need to insert postID.
-
         $conn = self::getConnection();
         $stmt = $conn->prepare("INSERT INTO comments 
                                 (text, user_id, post_id, date)

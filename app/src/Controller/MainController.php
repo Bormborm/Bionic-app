@@ -8,15 +8,14 @@ use Bormborm\Model\Repository\User;
 
 class MainController extends TemplateController
 {
-    //TODO: implement registration and login through twig templates
+    //TODO: implement registration with twig templates. Make IndexAction work with / path
 
     public function indexAction()
     {
         return $this->templater->render(
-            'name.twig',
+            'register.twig',
             [
-                'array' => 'Of data',
-                'with' => 'values needed'
+                // no data needed probably
             ]
         );
     }

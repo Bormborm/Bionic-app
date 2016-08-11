@@ -23,15 +23,23 @@ class Post extends DBHandlerService
             $allPostComments = (new Comment())->getAllPostComments($postArray['id']);
             $posts[$postModel] =
                 (
-                    new PostModel(
-                        $postArray['id'],
-                        $postArray['text'],
-                        $postArray['date']
-                    )
+                new PostModel(
+                    $postArray['id'],
+                    $postArray['text'],
+                    $postArray['date']
+                )
                 )->setComments($allPostComments);
         }
         return $posts;
-
     }
 
+    public function addNewPost(string $postText, int $id)
+    {
+        $conn = self::getConnection();
+        $stmt = $conn->prepare("INSERT INTO posts 
+                                (text, user_id, date) 
+                                VALUES (:postText, $id, NOW())");
+        $stmt->bindValue(':postText', $postText);
+        $stmt->execute();
+    }
 }
