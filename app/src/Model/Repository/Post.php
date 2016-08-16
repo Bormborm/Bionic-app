@@ -42,4 +42,11 @@ class Post extends DBHandlerService
         $stmt->bindValue(':postText', $postText);
         $stmt->execute();
     }
+
+    public function deletePost(int $id)
+    {
+        $response = self::query("DELETE FROM posts WHERE id=" . $id . ";");
+        return $response;
+    }
 }
+

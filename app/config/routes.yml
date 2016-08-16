@@ -10,4 +10,8 @@ post:
   class: '\Bormborm\Controller\MainController'
   method: 'getPost'
 
+index:
+  class: '\Bormborm\Controller\MainController'
+  method: 'index'
+
 

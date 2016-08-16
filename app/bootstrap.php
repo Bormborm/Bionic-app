@@ -7,7 +7,7 @@ require_once 'vendor/autoload.php';
 
 use Symfony\Component\Yaml\Yaml;
 
-define('APP_DEFAULT_ROUTE', 'user');
+define('APP_DEFAULT_ROUTE', 'index');
 
 $routesConfigFile = __DIR__ . DIRECTORY_SEPARATOR . 'config/routes.yml';
 if (!file_exists($routesConfigFile)) {
@@ -15,7 +15,7 @@ if (!file_exists($routesConfigFile)) {
 }
 $routes = Yaml::parse(file_get_contents($routesConfigFile), Yaml::PARSE_OBJECT);
 
-if (!$route = $_GET['entity'] ?: false) {
+if (!$route = $_GET['entity'] ? $_GET['entity'] : false) {
     $route = APP_DEFAULT_ROUTE;
 }
 
@@ -33,6 +33,7 @@ if (!class_exists($controllerClass) || !method_exists($controllerClass, $control
 $validator = new \Bormborm\Services\ValidationService();
 $commentRepository = new \Bormborm\Model\Repository\Comment();
 $postRepository = new \Bormborm\Model\Repository\Post();
+
 if (!empty($_POST['logout'])) {
     unset($_SESSION);
     unset($_POST['email']);
@@ -41,13 +42,16 @@ if (!empty($_POST['logout'])) {
 
 if (!empty($_POST['password']) && (!empty($_POST['email'])))
 {
-    $validated = $validator->validatePassword($_POST['email'], $_POST['password']);
 
+    $validated = $validator->validatePassword($_POST['email'], $_POST['password']);
     //TODO: Сделать с этим что-нибудь!
     // hardcoding incoming!!!
-
     $_GET['entity'] = 'user';
+    $route = 'user';
     $_GET['id'] = $validated['id'];
+    echo 'SESSION: '; var_dump($_SESSION); echo "<br />";
+    echo 'ENTITY: '; var_dump($_GET['entity']); echo "<br />";
+    echo 'id-modified: '; var_dump($_GET['id']); echo "<br />";
 }
 
 
@@ -72,12 +76,12 @@ if (!empty($_POST['postText']))
     $postRepository->addNewPost($_POST['postText'], $_SESSION['id']);
 }
 
-if (empty($_SESSION['id']) || ($entity == null)) {
-include __DIR__ . DIRECTORY_SEPARATOR . 'templates/htmlTemplate.html';
-}
-var_dump($_SESSION);
-var_dump($_GET['entity']);
-var_dump($_GET['id']);
+//if (empty($_SESSION['id']) || ($entity == null)) {
+//include __DIR__ . DIRECTORY_SEPARATOR . 'templates/htmlTemplate.html';
+//}
+//echo 'SESSION: '; var_dump($_SESSION); echo "<br />";
+//echo 'ENTITY: '; var_dump($_GET['entity']); echo "<br />";
+//echo 'id-modified: '; var_dump($_GET['id']); echo "<br />";
 
 if (gettype($response) === "string") {
     header("HTTP/1.1 200 OK");

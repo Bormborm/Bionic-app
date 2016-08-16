@@ -9,21 +9,20 @@ class ValidationService extends DBHandlerService
     /**
      * @param $email
      * @param $password
-     * @return bool|array
+     * @return array
      */
     public function validatePassword($email, $password)
     {
-        $result = false;
-        $response = (self::query("SELECT id, password 
+        $response = (self::query("SELECT id, password, login 
                               FROM users 
                               WHERE email='" . $email . "';"))
                               ->fetch();
-        $response['id'] = (int) $response['id'];
         if ($response['password'] == md5($password))
         {
-            $result = $response;
-            $_SESSION['id'] = $result['id'];
+            $_SESSION['id'] = (int) $response['id'];
+            $_SESSION['name'] = $response['login'];
         }
-        return $result;
+        return $response;
     }
 }
+

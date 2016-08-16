@@ -19,6 +19,7 @@ class Comment extends DBHandlerService
         return $comment;
 
     }
+
     public function addNewCommentByUserId(int $id, string $text, int $post_id)
     {
         $conn = self::getConnection();
@@ -34,7 +35,8 @@ class Comment extends DBHandlerService
         $response = self::query("SELECT u.name, c.text, c.date, c.id, c.user_id 
                                   FROM comments c LEFT JOIN users u 
                                   ON c.user_id = u.id 
-                                  WHERE c.post_id = " . $postId . ";");
+                                  WHERE c.post_id = " . $postId . " 
+                                  ORDER BY c.date;");
         $comments = $response->fetchAll();
         foreach ($comments as $commentModel => $commentArray) {
             $comments[$commentModel] = (new CommentModel())
@@ -46,6 +48,7 @@ class Comment extends DBHandlerService
         }
         return $comments;
     }
+
     public function deleteComment(int $id)
     {
         $response = self::query("DELETE FROM comments WHERE id=" . $id . ";");
