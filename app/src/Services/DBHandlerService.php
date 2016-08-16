@@ -12,7 +12,7 @@ class DBHandlerService
             'dbname' => 'pantheon',
             'user' => 'olympus',
             'password' => 'odin3306',
-            'host' => '192.168.1.4',
+            'host' => '192.168.1.2',
             'driver' => 'pdo_mysql',
         );
         return DriverManager::getConnection($connectionParams);

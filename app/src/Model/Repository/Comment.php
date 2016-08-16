@@ -13,7 +13,7 @@ class Comment extends DBHandlerService
                                  FROM users u LEFT JOIN comments c 
                                  ON u.id = c.user_id 
                                  WHERE u.id = ". $id . "
-                                 GROUP BY c.date;");
+                                 ORDER BY c.date ASC;");
         $comment =  $response->fetchAll();
         $comment['id'] = (int) $comment['id'];
         return $comment;
