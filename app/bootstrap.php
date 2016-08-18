@@ -39,20 +39,17 @@ $entity = $_GET['entity'];
 
 $response = (new $controllerClass)->$controllerMethod();
 
-if (!empty($_POST['addedComment']) && (!empty($_POST['postId'])))
-{
-    $postId = (int) $_POST['postId'];
+if (!empty($_POST['addedComment']) && (!empty($_POST['postId']))) {
+    $postId = (int)$_POST['postId'];
     $commentRepository->addNewCommentByUserId($_SESSION['id'], $_POST['addedComment'], $postId);
 }
 
-if (!empty($_POST['deleteComment']))
-{
-    $id = (int) $_POST['deleteComment'];
+if (!empty($_POST['deleteComment'])) {
+    $id = (int)$_POST['deleteComment'];
     $commentRepository->deleteComment($id);
 }
 
-if (!empty($_POST['postText']))
-{
+if (!empty($_POST['postText'])) {
     $postRepository->addNewPost($_POST['postText'], $_SESSION['id']);
 }
 

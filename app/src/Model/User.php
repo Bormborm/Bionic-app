@@ -7,6 +7,20 @@ use Bormborm\Model\Post;
 
 class User
 {
+    //TODO: make constructor good
+
+    public function __construct(int $id, string $name, string $lastname, string $email,
+                                string $password /**$posts = null, $comments = null **/)
+    {
+        $this->id = $id;
+        self::setName($name);
+        self::setLastname($lastname);
+        self::setEmail($email);
+        self::setPassword($password);
+        //self::setPosts($posts);
+        //self::setComments($comments);
+    }
+
     /**
      * @var int
      */
@@ -50,20 +64,6 @@ class User
      * @var string
      */
     private $userAvatar;
-
-    //TODO: make constructor good
-
-    public function __construct(int $id, string $name, string $lastname, string $email,
-                                string $password /**$posts = null, $comments = null **/)
-    {
-        $this->id = $id;
-        self::setName($name);
-        self::setLastname($lastname);
-        self::setEmail($email);
-        self::setPassword($password);
-        //self::setPosts($posts);
-        //self::setComments($comments);
-    }
 
     /**
      * @return int
@@ -224,3 +224,4 @@ class User
         return $response;
     }
 }
+

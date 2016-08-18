@@ -2,14 +2,11 @@
 
 namespace Bormborm\Model\Repository;
 
-
-
 use Bormborm\Model\User as UserModel;
 use Bormborm\Services\DBHandlerService;
 
 class User extends DBHandlerService
 {
-    //TODO: add posts and comments to single user
 
     /**
      * @param int $id
@@ -18,8 +15,8 @@ class User extends DBHandlerService
     public static function getUserById(int $id)
     {
         $conn = self::getConnection();
-        $resp = $conn->query("SELECT * FROM users WHERE id = ". $id . ";");
-        $col =  $resp->fetch();
+        $resp = $conn->query("SELECT * FROM users WHERE id = " . $id . ";");
+        $col = $resp->fetch();
         $user = new UserModel($id, $col['name'], $col['lastname'], $col['email'], $col['password']);
         $user->setPosts((new Post())->getAllByUserId($id));
 
@@ -29,7 +26,7 @@ class User extends DBHandlerService
     /**
      * @return array
      */
-    public function getAll() :array
+    public function getAll()
     {
         $conn = self::getConnection();
 

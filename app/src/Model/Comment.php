@@ -116,6 +116,5 @@ class Comment
     {
         return $this->date;
     }
-
-
 }
+

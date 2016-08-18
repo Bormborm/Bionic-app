@@ -44,11 +44,13 @@
 			border: 1px solid wheat;
 			margin: 0 auto 1% 20%;
 		}
+
 		.post-add {
 			width: 70%;
 			padding: .5%;
 			margin: 0 auto 1% 20%;
 		}
+
 		.post-add input[type="text"] {
 			width: 65%;
 			padding: .5%;
@@ -73,9 +75,11 @@
 		.comment p {
 			padding: .2%;
 		}
+
 		.header-nav {
 			border: 2px solid crimson;
 		}
+
 		.header-nav > p, form {
 			display: inline;
 		}
@@ -134,7 +138,7 @@
 			border-bottom-right-radius: 4px;
 		}
 
-		.logout-button{
+		.logout-button {
 			float: right;
 			border-radius: 3px;
 			-moz-border-radius: 3px;
@@ -169,21 +173,22 @@
 <div class="header-nav">
 	<div class="view-selector">
 		<p>What you want to see, <strong>{{ user }}</strong>?</p>
-	<form action="" method="get">
-		<div class="radio-buttons">
-			<div>
-				<input id="radio1" type="radio" name="entity" value="user" checked>
-				<label for="radio1">User</label>
-			</div>
+		<form action="" method="get">
+			<div class="radio-buttons">
+				<div>
+					<input id="radio1" type="radio" name="entity" value="user" checked>
+					<label for="radio1">User</label>
+				</div>
 
-			<div>
-				<input id="radio2" type="radio" name="entity" value="post">
-				<label for="radio2">Post</label>
+				<div>
+					<input id="radio2" type="radio" name="entity" value="post">
+					<label for="radio2">Post</label>
+				</div>
 			</div>
-		</div>
-		<input type="number" name="id" min="1" placeholder="id" step="1" value="{{ id }}">
-		<input type="submit" value="Submit">
-	</form></div>
+			<input type="number" name="id" min="1" placeholder="id" step="1" value="{{ id }}">
+			<input type="submit" value="Submit">
+		</form>
+	</div>
 	<div class="logout">
 		<form action="/" method="get">
 			<input type="hidden" name="entity" value="logout">

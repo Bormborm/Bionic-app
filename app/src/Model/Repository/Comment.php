@@ -12,10 +12,9 @@ class Comment extends DBHandlerService
         $response = self::query("SELECT u.name, c.text, c.date, c.id 
                                  FROM users u LEFT JOIN comments c 
                                  ON u.id = c.user_id 
-                                 WHERE u.id = ". $id . "
+                                 WHERE u.id = " . $id . "
                                  ORDER BY c.date ASC;");
-        $comment =  $response->fetchAll();
-        $comment['id'] = (int) $comment['id'];
+        $comment = $response->fetchAll();
         return $comment;
 
     }
@@ -26,7 +25,7 @@ class Comment extends DBHandlerService
         $stmt = $conn->prepare("INSERT INTO comments 
                                 (text, user_id, post_id, date)
                                 VALUES (:text, $id, $post_id, NOW())");
-        $stmt->bindValue(':text',$text);
+        $stmt->bindValue(':text', $text);
         $stmt->execute();
     }
 
@@ -43,8 +42,8 @@ class Comment extends DBHandlerService
                 ->setUserName($commentArray['name'])
                 ->setText($commentArray['text'])
                 ->setDate($commentArray['date'])
-                ->setId((int) $commentArray['id'])
-                ->setUserId((int) $commentArray['user_id']);
+                ->setId((int)$commentArray['id'])
+                ->setUserId((int)$commentArray['user_id']);
         }
         return $comments;
     }
@@ -55,3 +54,4 @@ class Comment extends DBHandlerService
         return $response;
     }
 }
+

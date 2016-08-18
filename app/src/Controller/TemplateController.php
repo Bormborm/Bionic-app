@@ -16,6 +16,6 @@ class TemplateController
     {
         $this->templater = new \Twig_Environment(
             new \Twig_Loader_Filesystem((self::VIEWS_DIR),
-        array('cache' => self::CACHE_DIR, 'auto_reload' => true)));
+                array('cache' => self::CACHE_DIR, 'auto_reload' => true)));
     }
 }

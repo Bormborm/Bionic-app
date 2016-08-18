@@ -4,6 +4,14 @@ namespace Bormborm\Model;
 
 class Post
 {
+
+    public function __construct(int $id, string $text, string $date)
+    {
+        $this->postId = $id;
+        $this->text = $text;
+        $this->date = $date;
+    }
+
     /**
      * @var int
      */
@@ -20,13 +28,6 @@ class Post
      * @var Comment []
      */
     private $comments;
-
-    public function __construct(int $id, string $text, string $date)
-    {
-        $this->postId = $id;
-        $this->text = $text;
-        $this->date = $date;
-    }
 
     /**
      * @return string
@@ -113,6 +114,4 @@ class Post
         $this->postId = $postId;
         return $this;
     }
-
-
 }

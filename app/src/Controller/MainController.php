@@ -5,16 +5,13 @@ namespace Bormborm\Controller;
 use Bormborm\Model\Repository\Comment;
 use Bormborm\Model\Repository\Post;
 use Bormborm\Model\Repository\User;
-use Bormborm\Services\ValidationService;
 
 class MainController extends TemplateController
 {
-    //TODO: implement registration with twig templates. Make IndexAction work with / path
 
     public function indexAction()
     {
-        if ($_GET['entity'] == 'logout')
-        {
+        if ($_GET['entity'] == 'logout') {
             unset($_SESSION);
             unset($_POST['email']);
             session_destroy();
@@ -22,18 +19,10 @@ class MainController extends TemplateController
                 'logout.twig',
                 [
                     'loggedOut' => 'You are logged out'
-                    // no data needed probably
                 ]
             );
-        } else
-        {
-            $render = $this->templater->render(
-            'index.twig',
-            [
-                // no data needed probably
-            ]
-        );
-        }
+        } else $render = $this->templater->render('index.twig',[]);
+
         return $render;
     }
 
@@ -42,16 +31,16 @@ class MainController extends TemplateController
         $id = ($userId) ? $userId : $_GET['id'];
         $user = new User();
         $response = $user->getUserById($id);
-            echo $this->templater->render(
-                'user.twig',
-                [
-                    'user' => $_SESSION['name'],
-                    'id' => $response->getId(),
-                    'name' => $response->getName(),
-                    'lastname' => $response->getLastname(),
-                    'posts' => $response->getPosts()
-                ]
-            );
+        echo $this->templater->render(
+            'user.twig',
+            [
+                'user' => $_SESSION['name'],
+                'id' => $response->getId(),
+                'name' => $response->getName(),
+                'lastname' => $response->getLastname(),
+                'posts' => $response->getPosts()
+            ]
+        );
         return $response;
     }
 
@@ -59,10 +48,9 @@ class MainController extends TemplateController
     {
         $post = new Post();
         if (!($_GET['id']) == null) {
-        $response = $post->getAllByUserId($_GET['id']);
+            $response = $post->getAllByUserId($_GET['id']);
             var_dump($response);
-        }
-        else {
+        } else {
             $response = $post->getAllByUserId(1);
 
         }
@@ -74,10 +62,10 @@ class MainController extends TemplateController
         $comment = new Comment();
         if (!($_GET['id']) == null) {
             $response = $comment->getAllByUserId($_GET['id']);
-        }
-        else {
+        } else {
             $response = $comment->getAllByUserId(1);
         }
         return $response;
     }
 }
+

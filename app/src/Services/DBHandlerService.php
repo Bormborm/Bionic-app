@@ -23,6 +23,5 @@ class DBHandlerService
         $connection = static::getConnection();
         return $connection->query($sql_query);
     }
-
 }
 

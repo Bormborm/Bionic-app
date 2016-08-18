@@ -25,6 +25,9 @@ class AuthController extends MainController
         return $response;
     }
 
+    /**
+     * @throws \Exception
+     */
     public function registerAction()
     {
         //TODO: move validations to service
