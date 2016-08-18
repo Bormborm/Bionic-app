@@ -168,7 +168,7 @@
 
 <div class="header-nav">
 	<div class="view-selector">
-		<p>What you want to see?</p>
+		<p>What you want to see, <strong>{{ user }}</strong>?</p>
 	<form action="" method="get">
 		<div class="radio-buttons">
 			<div>
@@ -181,7 +181,7 @@
 				<label for="radio2">Post</label>
 			</div>
 		</div>
-		<input type="number" name="id" min="0" placeholder="id" step="1">
+		<input type="number" name="id" min="1" placeholder="id" step="1" value="{{ id }}">
 		<input type="submit" value="Submit">
 	</form></div>
 	<div class="logout">
@@ -195,7 +195,7 @@
 <div class="user-info">
 	<p class="debug-info">user-info</p>
 	<img src="" alt="User Avatar">
-	<h1>Hello, {{ name }} {{ lastname }}</h1>
+	<h1>{{ name }} {{ lastname }}</h1>
 </div>
 
 <div class="posts-section"><p class="debug-info">post-section</p>

@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Bormborm\\Controller\\AuthController' => $baseDir . '/src/Controller/AuthController.php',
     'Bormborm\\Controller\\MainController' => $baseDir . '/src/Controller/MainController.php',
     'Bormborm\\Controller\\TemplateController' => $baseDir . '/src/Controller/TemplateController.php',
     'Bormborm\\Model\\Comment' => $baseDir . '/src/Model/Comment.php',

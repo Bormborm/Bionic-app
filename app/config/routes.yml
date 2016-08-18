@@ -19,5 +19,10 @@ logout:
   method: 'index'
 
 login:
-  class: '\Bormborm\Controller\MainController'
+  class: '\Bormborm\Controller\AuthController'
   method: 'login'
+
+register:
+  class: '\Bormborm\Controller\AuthController'
+  method: 'register'
+

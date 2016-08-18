@@ -26,30 +26,13 @@ if (!array_key_exists($route, $routes)) {
 $controllerClass = $routes[$route]['class'];
 $controllerMethod = $routes[$route]['method'] . 'Action';
 if (!class_exists($controllerClass) || !method_exists($controllerClass, $controllerMethod)) {
-    throw new RuntimeException('Your controller is a shit!');
+    throw new RuntimeException('No controller class or method provided');
 }
 
+// TODO: unload bootstrap to controllers
 
-$validator = new \Bormborm\Services\ValidationService();
 $commentRepository = new \Bormborm\Model\Repository\Comment();
 $postRepository = new \Bormborm\Model\Repository\Post();
-
-//if (!empty($_POST['password']) && (!empty($_POST['email'])))
-//{
-//
-//    $validated = $validator->validatePassword($_POST['email'], $_POST['password']);
-//    //TODO: Сделать с этим что-нибудь!
-//    // hardcoding incoming!!!
-////    echo "<pre>"; var_dump($_SESSION); echo "</pre>"; die();
-//    $route = 'user';
-//    $_GET['entity'] = 'user';
-//    $_GET['id'] = $validated['id'];
-//    echo 'SESSION: '; var_dump($_SESSION); echo "<br />";
-//    echo 'ENTITY: '; var_dump($_GET['entity']); echo "<br />";
-//    echo 'id-modified: '; var_dump($_GET['id']); echo "<br />";
-////    die();
-//}
-
 
 
 $entity = $_GET['entity'];

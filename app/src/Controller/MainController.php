@@ -11,19 +11,6 @@ class MainController extends TemplateController
 {
     //TODO: implement registration with twig templates. Make IndexAction work with / path
 
-    public function loginAction()
-    {
-        $validator = new ValidationService();
-        if (!empty($_POST['password']) && (!empty($_POST['email']))) {
-
-            $validated = $validator->validatePassword($_POST['email'], $_POST['password']);
-        }
-        if ($validated)
-        {
-            return $this->getUserAction($validated['id']);
-        }
-    }
-
     public function indexAction()
     {
         if ($_GET['entity'] == 'logout')
@@ -58,6 +45,7 @@ class MainController extends TemplateController
             echo $this->templater->render(
                 'user.twig',
                 [
+                    'user' => $_SESSION['name'],
                     'id' => $response->getId(),
                     'name' => $response->getName(),
                     'lastname' => $response->getLastname(),
