@@ -34,11 +34,13 @@ $validator = new \Bormborm\Services\ValidationService();
 $commentRepository = new \Bormborm\Model\Repository\Comment();
 $postRepository = new \Bormborm\Model\Repository\Post();
 
-if (!empty($_POST['logout'])) {
-    unset($_SESSION);
-    unset($_POST['email']);
-    session_destroy();
-}
+//
+//
+//if (!empty($_POST['logout'])) {
+//    unset($_SESSION);
+//    unset($_POST['email']);
+//    session_destroy();
+//}
 
 if (!empty($_POST['password']) && (!empty($_POST['email'])))
 {
@@ -46,13 +48,16 @@ if (!empty($_POST['password']) && (!empty($_POST['email'])))
     $validated = $validator->validatePassword($_POST['email'], $_POST['password']);
     //TODO: Сделать с этим что-нибудь!
     // hardcoding incoming!!!
+//    echo "<pre>"; var_dump($_SESSION); echo "</pre>"; die();
+
     $_GET['entity'] = 'user';
-    $route = 'user';
     $_GET['id'] = $validated['id'];
     echo 'SESSION: '; var_dump($_SESSION); echo "<br />";
     echo 'ENTITY: '; var_dump($_GET['entity']); echo "<br />";
     echo 'id-modified: '; var_dump($_GET['id']); echo "<br />";
+    die();
 }
+
 
 
 $entity = $_GET['entity'];
@@ -76,9 +81,7 @@ if (!empty($_POST['postText']))
     $postRepository->addNewPost($_POST['postText'], $_SESSION['id']);
 }
 
-//if (empty($_SESSION['id']) || ($entity == null)) {
-//include __DIR__ . DIRECTORY_SEPARATOR . 'templates/htmlTemplate.html';
-//}
+
 //echo 'SESSION: '; var_dump($_SESSION); echo "<br />";
 //echo 'ENTITY: '; var_dump($_GET['entity']); echo "<br />";
 //echo 'id-modified: '; var_dump($_GET['id']); echo "<br />";

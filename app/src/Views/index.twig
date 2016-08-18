@@ -1,19 +1,19 @@
 {% include 'includes/header.twig' %}
 {% include 'includes/loginForm.twig'%}
 <body>
-	<div id="register">
+<p>{{ loggedOut }}</p>
+	<div id="form" class="register">
 		<form action="" method="post">
 			<fieldset class="clearfix">
-				<p><input type="email" placeholder="E-mail" name="email"  required></p>
+				<p><input type="email" id="here" placeholder="E-mail" name="email"  required></p>
 				<p><input type="password" placeholder="Password" name="password" required></p>
 				<p><input type="password" placeholder="Repeat Password" name="password" required></p>
 				<p><input type="text" placeholder="Name" name="name" required></p>
 				<p><input type="text" placeholder="Lastname" name="lastname" required></p>
-				<p><input type="submit" value="Register"></p>
+				<p><input type="submit" value="Зарегистрироваться"></p>
 			</fieldset>
 		</form>
 	</div>
-</form>
 </body>
 
 {% include 'includes/footer.twig' %}

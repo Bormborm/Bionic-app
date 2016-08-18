@@ -52,12 +52,12 @@ p {
 
 /* ---------- LOGIN ---------- */
 
-#login {
-	margin: 150px auto;
+#form {
+	margin:  35px auto;
 	width: 280px;
 }
 
-#login form span {
+#form form span {
 	background-color: #363b41;
 	border-radius: 3px 0px 0px 3px;
 	-moz-border-radius: 3px 0px 0px 3px;
@@ -71,12 +71,12 @@ p {
 	width: 50px;
 }
 
-#login form input {
+#form form input {
 	height: 50px;
 	outline:none;
 }
 
-#login form input[type="text"], input[type="password"] {
+#form form input[type="email"], input[type="password"], input[type="text"] {
 	background-color: #3b4148;
 	border-radius: 0px 3px 3px 0px;
 	-moz-border-radius: 0px 3px 3px 0px;
@@ -87,11 +87,11 @@ p {
 	width: 198px;
 }
 
-#login form input:focus {
+#form form input:focus {
 	color:#fff;
 }
 
-#login form input[type="submit"] {
+#form form input[type="submit"] {
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -104,15 +104,15 @@ p {
 	width: 280px;
 }
 
-#login form input[type="submit"]:hover {
+#form form input[type="submit"]:hover {
 	background-color: #d44179;
 }
 
-#login > p {
+#form > p {
 	text-align: center;
 }
 
-#login > p span {
+#form > p span {
 	padding-left: 5px;
 }
 

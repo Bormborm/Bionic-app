@@ -14,4 +14,6 @@ index:
   class: '\Bormborm\Controller\MainController'
   method: 'index'
 
-
+logout:
+  class: '\Bormborm\Controller\MainController'
+  method: 'index'

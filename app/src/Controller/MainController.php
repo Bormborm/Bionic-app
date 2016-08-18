@@ -12,12 +12,20 @@ class MainController extends TemplateController
 
     public function indexAction()
     {
+        if ($_GET['entity'] = 'logout') {
+            unset($_SESSION);
+            unset($_POST['email']);
+            session_destroy();
+
+
         return $this->templater->render(
-            'register.twig',
+            'index.twig',
             [
+                'loggedOut' => 'You are logged out'
                 // no data needed probably
             ]
         );
+        }
     }
 
     public function getUserAction()
@@ -48,9 +56,11 @@ class MainController extends TemplateController
         $post = new Post();
         if (!($_GET['id']) == null) {
         $response = $post->getAllByUserId($_GET['id']);
+            var_dump($response);
         }
         else {
             $response = $post->getAllByUserId(1);
+
         }
         return $response;
     }
@@ -67,5 +77,9 @@ class MainController extends TemplateController
         return $response;
     }
 
+    public function logoutAction()
+    {
+        echo "hello, logged out"; die();
+    }
 
 }
