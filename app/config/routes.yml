@@ -17,3 +17,7 @@ index:
 logout:
   class: '\Bormborm\Controller\MainController'
   method: 'index'
+
+login:
+  class: '\Bormborm\Controller\MainController'
+  method: 'login'

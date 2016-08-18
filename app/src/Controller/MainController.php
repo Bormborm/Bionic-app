@@ -5,49 +5,65 @@ namespace Bormborm\Controller;
 use Bormborm\Model\Repository\Comment;
 use Bormborm\Model\Repository\Post;
 use Bormborm\Model\Repository\User;
+use Bormborm\Services\ValidationService;
 
 class MainController extends TemplateController
 {
     //TODO: implement registration with twig templates. Make IndexAction work with / path
 
+    public function loginAction()
+    {
+        $validator = new ValidationService();
+        if (!empty($_POST['password']) && (!empty($_POST['email']))) {
+
+            $validated = $validator->validatePassword($_POST['email'], $_POST['password']);
+        }
+        if ($validated)
+        {
+            return $this->getUserAction($validated['id']);
+        }
+    }
+
     public function indexAction()
     {
-        if ($_GET['entity'] = 'logout') {
+        if ($_GET['entity'] == 'logout')
+        {
             unset($_SESSION);
             unset($_POST['email']);
             session_destroy();
-
-
-        return $this->templater->render(
+            $render = $this->templater->render(
+                'logout.twig',
+                [
+                    'loggedOut' => 'You are logged out'
+                    // no data needed probably
+                ]
+            );
+        } else
+        {
+            $render = $this->templater->render(
             'index.twig',
             [
-                'loggedOut' => 'You are logged out'
                 // no data needed probably
             ]
         );
         }
+        return $render;
     }
 
-    public function getUserAction()
+    public function getUserAction($userId = null)
     {
+        $id = ($userId) ? $userId : $_GET['id'];
         $user = new User();
-        if (($_GET['id']) == null) {
-            $response = $user->getAll();
-            //$this->templater->render('users.twig', $response);
-        }
-        else {
-            $response = $user->getUserById($_GET['id']);
+        $response = $user->getUserById($id);
             echo $this->templater->render(
                 'user.twig',
                 [
                     'id' => $response->getId(),
-                    'name' => $response->getName(), //string
-                    'lastname' => $response->getLastname(), //string
-                    'posts' => $response->getPosts() //array of post objects with comments
+                    'name' => $response->getName(),
+                    'lastname' => $response->getLastname(),
+                    'posts' => $response->getPosts()
                 ]
             );
-         //  echo "<pre>"; var_dump($response); echo "</pre>"; die();
-        }
         return $response;
     }
 
@@ -76,10 +92,4 @@ class MainController extends TemplateController
         }
         return $response;
     }
-
-    public function logoutAction()
-    {
-        echo "hello, logged out"; die();
-    }
-
 }

@@ -120,3 +120,9 @@ p {
 	0%{top:-30px; opacity: 0;}
 	100%{top:0px; opacity: 1;}
 }
+.logged-out {
+    background-color: #d44179;
+    color: white;
+    text-align: center;
+    padding: .5% 0;
+}

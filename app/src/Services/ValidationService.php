@@ -2,8 +2,6 @@
 
 namespace Bormborm\Services;
 
-use PDO;
-
 class ValidationService extends DBHandlerService
 {
     /**
@@ -22,7 +20,9 @@ class ValidationService extends DBHandlerService
         {
             $_SESSION['id'] =  (int) $response['id'];
             $_SESSION['name'] = $response['login'];
-        } else throw new \Exception("Password is wrong");
+        } else {
+            throw new \Exception("Password is wrong");
+        }
         return $response;
     }
 }
