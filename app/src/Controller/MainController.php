@@ -26,30 +26,33 @@ class MainController extends TemplateController
         return $render;
     }
 
+    /**
+     * @param null $userId
+     * @return \Bormborm\Model\User
+     */
     public function getUserAction($userId = null)
     {
-        $id = ($userId) ? $userId : $_GET['id'];
-        $user = new User();
-        $response = $user->getUserById($id);
+        $id = ($userId) ? $userId : (int) $_GET['id'];
+        $userRep = new User();
+        $user = $userRep->getUserById($id);
         echo $this->templater->render(
             'user.twig',
             [
                 'user' => $_SESSION['name'],
-                'id' => $response->getId(),
-                'name' => $response->getName(),
-                'lastname' => $response->getLastname(),
-                'posts' => $response->getPosts()
+                'id' => $user->getId(),
+                'name' => $user->getName(),
+                'lastname' => $user->getLastname(),
+                'posts' => $user->getPosts()
             ]
         );
-        return $response;
+        return $user;
     }
 
     public function getPostAction()
     {
         $post = new Post();
         if (!($_GET['id']) == null) {
-            $response = $post->getAllByUserId($_GET['id']);
-            var_dump($response);
+            $response = $post->getAllByUserId((int) $_GET['id']);
         } else {
             $response = $post->getAllByUserId(1);
 

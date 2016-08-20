@@ -2,8 +2,18 @@
 
 namespace Bormborm\Services;
 
+
 class ValidationService extends DBHandlerService
 {
+    /**
+     * @param $email
+     * @return bool
+     */
+    public function validateEmail($email)
+    {
+        return (filter_var(filter_var($email, FILTER_SANITIZE_EMAIL), FILTER_VALIDATE_EMAIL)) ? true : false;
+    }
+
     /**
      * @param $email
      * @param $password
@@ -23,6 +33,17 @@ class ValidationService extends DBHandlerService
             throw new \Exception("Password is wrong");
         }
         return $response;
+    }
+
+    public function checkUserExists($email)
+    {
+        $rr = self::query("SELECT * FROM users WHERE email = '$email';")->fetch();
+//        $conn = self::getConnection();
+//        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ':email';");
+//        $stmt->bindValue(':email', $email);
+//        $stmt->execute();
+        return $rr;
+
     }
 }
 

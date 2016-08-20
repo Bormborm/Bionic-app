@@ -31,6 +31,7 @@ if (!class_exists($controllerClass) || !method_exists($controllerClass, $control
 
 // TODO: unload bootstrap to controllers
 
+
 $commentRepository = new \Bormborm\Model\Repository\Comment();
 $postRepository = new \Bormborm\Model\Repository\Post();
 
