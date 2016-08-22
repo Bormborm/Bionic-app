@@ -231,14 +231,14 @@
 			<div class="comment"><p class="debug-info">comment</p>
 				<p><strong>{{ comments.getUsername() }} wrote at {{ comments.getDate() }}
 						: </strong><br/>{{ comments.getText() }}</p>
-				<form method="post" action="">
+				<form method="post" action="/?entity=deleteComment&id={{ id }}">
 					<input type="hidden" name="deleteComment" value="{{ comments.getId() }}">
 					<input type="submit" value="delete">
 				</form>
 			</div>
 		{% endfor %}
 		<div class="comment">
-			<form method="post" action="/?entity=user&id={{ id }}">
+			<form method="post" action="/?entity=addComment&id={{ id }}">
 				<input type="text" placeholder="add comment" name="addedComment">
 				<input type="hidden" name="postId" value="{{ post.getId() }}">
 				<input type="submit" value="Post">

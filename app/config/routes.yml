@@ -34,3 +34,11 @@ deletePost:
   class: '\Bormborm\Controller\MainController'
   method: 'deletePost'
 
+addComment:
+  class: '\Bormborm\Controller\MainController'
+  method: 'addComment'
+
+deleteComment:
+  class: '\Bormborm\Controller\MainController'
+  method: 'deleteComment'
+

@@ -1,0 +1,3 @@
+{% extends 'user.twig' %}
+{# There must be user homepage with post and comment delete and update buttons. #}
+{# user.twig must be changed in order to don't show these buttons on other users' pages #}
