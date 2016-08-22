@@ -5,17 +5,26 @@ namespace Bormborm\Model;
 class Post
 {
 
-    public function __construct(int $id, string $text, string $date)
+    public function __construct(int $id, string $text, string $date, string $userName)
     {
         $this->postId = $id;
         $this->text = $text;
         $this->date = $date;
+        $this->userName = $userName;
     }
 
+    /**
+     * @var string
+     */
+    private $userName;
     /**
      * @var int
      */
     private $postId;
+    /**
+     * @var int
+     */
+    private $userId;
     /**
      * @var string
      */
@@ -112,6 +121,42 @@ class Post
     public function setId(int $postId)
     {
         $this->postId = $postId;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param int $userId
+     * @return $this
+     */
+    public function setUserId(int $userId)
+    {
+        $this->userId = $userId;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserName(): string
+    {
+        return $this->userName;
+    }
+
+    /**
+     * @param string $userName
+     * @return $this
+     */
+    public function setUserName(string $userName)
+    {
+        $this->userName = $userName;
         return $this;
     }
 }

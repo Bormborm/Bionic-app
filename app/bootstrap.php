@@ -29,35 +29,7 @@ if (!class_exists($controllerClass) || !method_exists($controllerClass, $control
     throw new RuntimeException('No controller class or method provided');
 }
 
-// TODO: unload bootstrap to controllers
-
-
-$commentRepository = new \Bormborm\Model\Repository\Comment();
-$postRepository = new \Bormborm\Model\Repository\Post();
-
-
-$entity = $_GET['entity'];
-
 $response = (new $controllerClass)->$controllerMethod();
-
-if (!empty($_POST['addedComment']) && (!empty($_POST['postId']))) {
-    $postId = (int)$_POST['postId'];
-    $commentRepository->addNewCommentByUserId($_SESSION['id'], $_POST['addedComment'], $postId);
-}
-
-if (!empty($_POST['deleteComment'])) {
-    $id = (int)$_POST['deleteComment'];
-    $commentRepository->deleteComment($id);
-}
-
-if (!empty($_POST['postText'])) {
-    $postRepository->addNewPost($_POST['postText'], $_SESSION['id']);
-}
-
-
-//echo 'SESSION: '; var_dump($_SESSION); echo "<br />";
-//echo 'ENTITY: '; var_dump($_GET['entity']); echo "<br />";
-//echo 'id-modified: '; var_dump($_GET['id']); echo "<br />";
 
 if (gettype($response) === "string") {
     header("HTTP/1.1 200 OK");

@@ -210,15 +210,21 @@
 
 <div class="posts-section"><p class="debug-info">post-section</p>
 	<div class="post-add">
-		<form action="/?entity=user&id={{ id }}" method="post">
+		{#<form action="/?entity=user&id={{ id }}" method="post">#}
+		<form action="/?entity=addPost&id={{ id }}" method="post">
 			<input type="text" name="postText" placeholder="add post" required>
 			<input type="submit" value="Add post">
 		</form>
 	</div>
 	{% for post in posts %}
 	<div class="post"><p class="debug-info">post</p>
+		<p class="post-date">{{ post.getUsername }}, {{ post.getDate() }}</p>
 		<p>{{ post.getText() }}</p>
-		<p class="post-date">{{ post.getDate() }}</p>
+		<form method="post" action="/?entity=deletePost&id={{ id }}">
+			<input type="hidden" name="deletePost" value="{{ post.getId() }}">
+			<input type="submit" value="delete">
+		</form>
+
 	</div>
 	<div class="comment-section">
 		{% for comments in post.getComments() %}

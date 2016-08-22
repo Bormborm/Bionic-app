@@ -13,7 +13,7 @@ class Post extends DBHandlerService
      */
     public function getAllByUserId(int $id)
     {
-        $response = self::query("SELECT p.text, p.date, p.id
+        $response = self::query("SELECT p.text, p.date, p.id , u.name
                                   FROM posts p LEFT JOIN users u
                                   ON u.id = p.user_id 
                                   WHERE u.id = " . $id . "
@@ -26,7 +26,8 @@ class Post extends DBHandlerService
                 new PostModel(
                     $postArray['id'],
                     $postArray['text'],
-                    $postArray['date']
+                    $postArray['date'],
+                    $postArray['name']
                 )
                 )->setComments($allPostComments);
         }

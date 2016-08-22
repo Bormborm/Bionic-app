@@ -26,3 +26,11 @@ register:
   class: '\Bormborm\Controller\AuthController'
   method: 'register'
 
+addPost:
+  class: '\Bormborm\Controller\MainController'
+  method: 'addPost'
+
+deletePost:
+  class: '\Bormborm\Controller\MainController'
+  method: 'deletePost'
+
