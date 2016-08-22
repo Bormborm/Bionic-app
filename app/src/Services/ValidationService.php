@@ -35,9 +35,18 @@ class ValidationService extends DBHandlerService
         return $response;
     }
 
-    public function checkUserExists($email)
+    public function checkUserExists($value)
     {
-        $rr = self::query("SELECT * FROM users WHERE email = '$email';")->fetch();
+        $emailQuery = "SELECT * FROM users WHERE email = '$value'";
+        $idQuery = "SELECT * FROM users WHERE id = $value";
+        if (gettype($value) == 'string') {
+            $query = $emailQuery;
+        } elseif (gettype($value) == 'integer') {
+            $query = $idQuery;
+        } else throw new \Exception("not a value passed to uservalidator");
+
+        $rr = (self::query($query)->fetch()) ? true : false;
+
 //        $conn = self::getConnection();
 //        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ':email';");
 //        $stmt->bindValue(':email', $email);

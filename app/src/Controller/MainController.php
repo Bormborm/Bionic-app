@@ -5,6 +5,7 @@ namespace Bormborm\Controller;
 use Bormborm\Model\Repository\Comment;
 use Bormborm\Model\Repository\Post;
 use Bormborm\Model\Repository\User;
+use Bormborm\Services\ValidationService;
 
 class MainController extends TemplateController
 {
@@ -23,6 +24,11 @@ class MainController extends TemplateController
             );
         } else $render = $this->templater->render('index.twig',[]);
 
+        if (isset($_SESSION['id']))
+        {
+            $this->getUserAction($_SESSION['id']);
+        }
+
         return $render;
     }
 
@@ -32,19 +38,24 @@ class MainController extends TemplateController
      */
     public function getUserAction($userId = null)
     {
+        $val = new ValidationService();
+
         $id = ($userId) ? $userId : (int) $_GET['id'];
-        $userRep = new User();
-        $user = $userRep->getUserById($id);
-        echo $this->templater->render(
-            'user.twig',
-            [
-                'user' => $_SESSION['name'],
-                'id' => $user->getId(),
-                'name' => $user->getName(),
-                'lastname' => $user->getLastname(),
-                'posts' => $user->getPosts()
-            ]
-        );
+        if ($val->checkUserExists((int) $id)) {
+
+            $userRep = new User();
+            $user = $userRep->getUserById($id);
+            echo $this->templater->render(
+                'user.twig',
+                [
+                    'user' => $_SESSION['name'],
+                    'id' => $user->getId(),
+                    'name' => $user->getName(),
+                    'lastname' => $user->getLastname(),
+                    'posts' => $user->getPosts()
+                ]
+            );
+        } else throw new \Exception("user doesn't exist");
         return $user;
     }
 
