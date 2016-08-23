@@ -33,6 +33,10 @@ if (!class_exists($controllerClass) || !method_exists($controllerClass, $control
     throw new RuntimeException('No controller class or method provided');
 }
 
+// $query = UriHelper::buildRequestQueryArgs($_REQUEST['query']);
+
+
+
 $response = (new $controllerClass)->$controllerMethod();
 
 if (gettype($response) === "string") {
