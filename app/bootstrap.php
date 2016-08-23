@@ -15,6 +15,10 @@ if (!file_exists($routesConfigFile)) {
 }
 $routes = Yaml::parse(file_get_contents($routesConfigFile), Yaml::PARSE_OBJECT);
 
+if (\Bormborm\Services\Api\ApiHelper::isApiCall($_REQUEST)) {
+    $route = \Bormborm\Services\Api\ApiHelper::generateRouteByRequest($_REQUEST);
+} // elseif ...vvv...
+
 if (!$route = $_GET['entity'] ? $_GET['entity'] : false) {
     $route = APP_DEFAULT_ROUTE;
 }
