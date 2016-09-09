@@ -8,19 +8,20 @@ use Bormborm\Services\DBHandlerService as DBH;
 class AuthController extends MainController
 {
     /**
+     * @param null $validatedData
      * @return \Bormborm\Model\User
      * @throws \Exception
      */
-    public function loginAction()
+    public function loginAction($validatedData = null)
     {
         $validator = new ValidationService();
         if (!empty($_POST['password']) && (!empty($_POST['email']))) {
 
-            $validated = $validator->validatePassword($_POST['email'], $_POST['password']);
+            $validatedData = $validator->validatePassword($_POST['email'], $_POST['password']);
         }
-        if ($validated)
+        if ($validatedData)
         {
-            $response = $this->getUserAction($validated['id']);
+            $response = $this->getUserAction($validatedData['id']);
         } else throw new \Exception("User is not validated");
         return $response;
     }
@@ -46,9 +47,6 @@ class AuthController extends MainController
             $stmt->execute();
 
             $this->loginAction();
-
-
-
         } else throw new \Exception("Registration not done");
     }
 }

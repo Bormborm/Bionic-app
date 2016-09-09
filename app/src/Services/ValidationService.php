@@ -14,6 +14,12 @@ class ValidationService extends DBHandlerService
         return (filter_var(filter_var($email, FILTER_SANITIZE_EMAIL), FILTER_VALIDATE_EMAIL)) ? true : false;
     }
 
+    private function checkEmailExists($email)
+    {
+
+    }
+
+    //TODO: WROOONG! validation must return bool
     /**
      * @param $email
      * @param $password
