@@ -42,3 +42,12 @@ deleteComment:
   class: '\Bormborm\Controller\MainController'
   method: 'deleteComment'
 
+#inClass
+
+getUsers:
+  class: '\Bormborm\Controller\UserController'
+  method: 'getUsers'
+
+apiGetUsers:
+  class: '\Bormborm\Controller\UserController'
+  method: 'getUsers'
